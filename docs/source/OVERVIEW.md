@@ -20,4 +20,4 @@ If no S3 bucket is specified for the distribution logs, one will be provisioned.
 
 ### KMS Key
 
-If no KMS key is specified for the encryption of resources, one will be provisioned. If using a pre-existing bucket, the key output from the KMS module should be passed in under the `key` object.
+If no KMS key is specified for the encryption of resources, one will be provisioned. If using a pre-existing key, the key output from the KMS module should be passed in under the `key` object.

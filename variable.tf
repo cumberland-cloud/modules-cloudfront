@@ -8,7 +8,7 @@ variable "distribution" {
 
     Cache policy: Name of the cache policy to retrieve with `aws_cloudfront_cache_policy` data block. Defaults to a managed policy. If not using a managed policy, the cache policy must exist in the account before deploying this module.
 
-    KMS key: If no KMS key is specified for the encryption of resources, one will be provisioned. If using a pre-existing bucket, the key output from the KMS module should be passed in under the `key` object.
+    KMS key: If no KMS key is specified for the encryption of resources, one will be provisioned. If using a pre-existing key, the key output from the KMS module should be passed in under the `key` object.
     EOT
 
     type                        = object({
@@ -36,13 +36,13 @@ variable "distribution" {
 }
 
 variable "domain" {
-    description             = "Fully qualified domain name."
-    type                    = string
-    default                 = "cumberland-cloud.com"   
+    description                 = "Fully qualified domain name."
+    type                        = string
+    default                     = "cumberland-cloud.com"   
 }
 
 variable "wildcard_cert" {
-    description             = "Flag to signal the data query to retrieve ACM SSL certificate should contain a wildcard for the subdomain"
-    type                    = bool
-    default                 = true       
+    description                 = "Flag to signal the data query to retrieve ACM SSL certificate should contain a wildcard for the subdomain"
+    type                        = bool
+    default                     = true       
 }

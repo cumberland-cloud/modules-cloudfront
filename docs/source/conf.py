@@ -60,7 +60,7 @@ html_theme = 'sphinx_material'
 html_theme_options = {
 
     # Set the name of the project to appear in the navigation.
-    'nav_title': 'Source Code',
+    'nav_title': 'Module: Cloudfront',
 
     # Set you GA account ID to enable tracking
     'google_analytics_account': 'UA-XXXXX',
@@ -74,8 +74,8 @@ html_theme_options = {
     'color_accent': 'light-blue',
 
     # Set the repo location to get a badge with stats
-    'repo_url': 'TODO',
-    'repo_name': 'TODO',
+    'repo_url': 'https://github.com/cumberland-cloud/modules-cloudfront.git',
+    'repo_name': 'modules-cloudfront',
 
     # Visible levels of the global TOC; -1 means unlimited
     'globaltoc_depth': 2,
