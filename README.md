@@ -1,4 +1,4 @@
-# Terraform Modules: KMS
+# Terraform Modules: Cloudfront Distribution
 
 A Terraform module for deploying a KMS key and policy.
 
