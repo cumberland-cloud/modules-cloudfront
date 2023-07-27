@@ -1,4 +1,4 @@
-ouput "distribution" {
+output "distribution" {
     value               = { 
         arn             = aws_cloudfront_distribution.this.arn
         domain_name     = aws_cloudfront_distribution.this.domain_name
