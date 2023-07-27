@@ -1,6 +1,6 @@
 module "origin" {
     count           = local.conditions.provision_origin_bucket ? 1 : 0
-    source          = "https://github.com/cumberland-cloud/modules-s3.git?ref=TODO"
+    source          = "https://github.com/cumberland-cloud/modules-s3.git?ref=9a2c821"
 
     bucket          = {
         name        = "${var.distribution.name}-dist"
@@ -11,7 +11,7 @@ module "origin" {
 
 module "logs" {
     count           = local.conditions.provision_logs_bucket ? 1 :0
-    source          = "https://github.com/cumberland-cloud/modules-s3.git?ref=TODO"
+    source          = "https://github.com/cumberland-cloud/modules-s3.git?ref=9a2c821"
 
     bucket          = {
         acl         = "log-delivery-write"
