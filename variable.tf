@@ -26,10 +26,10 @@ variable "distribution" {
 
         default_root_object     = optional(string, "index.html")
         http_version            = optional(string, "http2")
-        key                     = optional(object, null)
-        logs_bucket             = optional(object, null)
+        key                     = optional(any, null)
+        logs_bucket             = optional(any, null)
         logs_prefix             = optional(string, "dist")
-        origin_bucket           = optional(object, null)
+        origin_bucket           = optional(any, null)
         price_class             = optional(string, "PriceClass_100")
         viewer_protocol_policy  = optional(string, "redirect-to-https")
     })

@@ -15,12 +15,12 @@ locals {
                                         var.repository.key
                                     )
     logs_configuration              = local.conditions.provision_logs_bucket ? (
-                                        module.logs[0].bucket
+                                        module.logs[0].bucket[0]
                                     ) : (
                                         var.distribution.logs_bucket
                                     )
     origin_configuration            = local.conditions.provision_origin_bucket ? (
-                                        module.origin[0].bucket
+                                        module.origin[0].bucket[0]
                                     ) : (
                                         var.distribution.origin_bucket
                                     )
