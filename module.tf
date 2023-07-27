@@ -1,5 +1,5 @@
-module "s3" {
-    count           = local.conditions.provision_bucket ? 1 : 0
+module "origin" {
+    count           = local.conditions.provision_origin_bucket ? 1 : 0
     source          = "https://github.com/cumberland-cloud/modules-s3.git?ref=TODO"
 
     bucket          = {
@@ -7,7 +7,18 @@ module "s3" {
         policy      = data.aws_iam_policy_document.this.json
         key         = local.encryption_configuration.arn
     }
+}
 
+module "logs" {
+    count           = local.conditions.provision_logs_bucket ? 1 :0
+    source          = "https://github.com/cumberland-cloud/modules-s3.git?ref=TODO"
+
+    bucket          = {
+        acl         = "log-delivery-write"
+        name        = "${var.distribution.name}-logs"
+        policy      = data.aws_iam_policy_document.json
+        key         = local.encryption_configuration.arn
+    }
 }
 
 module "kms" {

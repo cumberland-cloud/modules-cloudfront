@@ -1,3 +1,13 @@
+data "aws_acm_certificate" "domain" {
+  domain                        = local.certificate_domain
+  statuses                      = [ "ISSUED" ]
+}
+
+
+data "aws_cloudfront_cache_policy" "this" {
+  name                      = var.distribution.cache_policy
+}
+
 data "aws_iam_policy_document" "this" {
   statement {
     sid                     = "EnableCloudfrontAccess"
