@@ -8,6 +8,8 @@ variable "distribution" {
 
     Cache policy: Name of the cache policy to retrieve with `aws_cloudfront_cache_policy` data block. Defaults to a managed policy. If not using a managed policy, the cache policy must exist in the account before deploying this module.
 
+    Response Headers policy: Name of the response headers policy to retrieve with `aws_cloudfront_response_headers_policy` data block. Defauls to a managed policy. If not using a managed policy, the response headers policy must exist in the account before deploying this module.
+    
     KMS key: If no KMS key is specified for the encryption of resources, one will be provisioned. If using a pre-existing key, the key output from the KMS module should be passed in under the `key` object.
     EOT
 
@@ -31,6 +33,8 @@ variable "distribution" {
         logs_prefix             = optional(string, "dist")
         origin_bucket           = optional(any, null)
         price_class             = optional(string, "PriceClass_100")
+        response_headers_policy = optional(string, "SecurityHeadersPolicy")
+        ssl_protocol_version    = optional(string, "TLSv1.2_2021")
         viewer_protocol_policy  = optional(string, "redirect-to-https")
     })
 }

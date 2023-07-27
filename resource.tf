@@ -2,8 +2,13 @@ resource "aws_cloudfront_origin_access_identity" "this" {
     comment                             = "${title(var.distribution.name)} Cloudfront Origin Access Identity"
 }
 
-
 resource "aws_cloudfront_distribution" "this" {
+    #checkov:skip=CKV2_AWS_47: "Ensure AWS CloudFront attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability"
+    #checkov:skip=CKV_AWS_68: "CloudFront Distribution should have WAF enabled"
+        # NOTE: WAFs are expensive. If I ever start making money doing this, I will fix this.
+    #checkov:skip=CKV_AWS_310: "Ensure CloudFront distributions should have origin failover configured"
+        # TODO: use a replica for origin failover
+
     aliases                             = [ var.domain ]
     default_root_object                 = var.distribution.default_root_object
     enabled                             = true
@@ -30,6 +35,7 @@ resource "aws_cloudfront_distribution" "this" {
         allowed_methods                 = var.distribution.allowed_methods
         cached_methods                  = var.distribution.cached_methods
         cache_policy_id                 = data.aws_cloudfront_cache_policy.this.id
+        response_headers_policy_id      = aws_cloudfront_response_headers_policy.this.id
         target_origin_id                = local.origin_id
         viewer_protocol_policy          = var.distribution.viewer_protocol_policy
         min_ttl                         = 0
@@ -40,7 +46,7 @@ resource "aws_cloudfront_distribution" "this" {
     viewer_certificate {
         acm_certificate_arn             = data.aws_acm_certificate.domain.arn
         cloudfront_default_certificate  = false
-        minimum_protocol_version        = "TLSv1.2_2019"
+        minimum_protocol_version        = var.distribution.ssl_protocol_version
         ssl_support_method              = "sni-only"
     }
 }

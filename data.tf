@@ -8,6 +8,10 @@ data "aws_cloudfront_cache_policy" "this" {
   name                      = var.distribution.cache_policy
 }
 
+data "aws_cloudfront_response_headers_policy" "this" {
+  name                      = var.distribution.response_headers_policy
+}
+
 data "aws_iam_policy_document" "this" {
   statement {
     sid                     = "EnableCloudfrontAccess"

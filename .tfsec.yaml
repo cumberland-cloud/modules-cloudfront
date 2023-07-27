@@ -1,3 +1,4 @@
 ---
 exclude:
-  # - 
+  - aws-cloudfront-enable-waf
+  # NOTE: WAFs are expensive.
