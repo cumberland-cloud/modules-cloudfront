@@ -23,7 +23,11 @@ module "distribution" {
 
 ## Cache Policy
 
-By default, the distribution will use a [managed cached policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html) of "Managed-CachingOptimized". A different policy may be specified by passing in the name of the block. The module will use a [cloudfront_cache_policy data block](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_cache_policy) to retrieve the ARN of the policy. **Note**: if you are not using a managed policy, the policy must exist in the AWS account before calling this module.
+By default, the distribution will use a [managed cached policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html) of "Managed-CachingOptimized". A different policy may be specified by passing in the name of the policy. The module will use a [aws_cloudfront_cache_policy data block](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_cache_policy) to retrieve the ARN of the policy. **Note**: if you are not using a managed policy, the policy must exist in the AWS account you are deploying into before calling this module.
+
+## Response Headers Policy
+
+By default, the distribution will use a [managed response headers policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-response-headers-policies.html) of "SecurityHeadersPolicy". A different policy may be specified by passing in the name of the policy. The module will use a [aws_cloudfront_response_headers_policy data block])(https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_response_headers_policy) to retrieve the ARN of the policy. **Note**: if you are not using a managed policy, the policy msut exist in the AWS account you are deploying into before calling this module.
 
 ## Certificate
 ## Conditional Resources
