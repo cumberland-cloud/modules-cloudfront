@@ -17,7 +17,7 @@ resource "aws_cloudfront_distribution" "this" {
     price_class                         = var.distribution.price_class
 
     origin {
-        domain_name                     = local.bucket_configuration.bucket_regional_domain_name
+        domain_name                     = local.origin_configuration.bucket_regional_domain_name
         origin_id                       = local.origin_id
 
         s3_origin_config {
@@ -35,7 +35,7 @@ resource "aws_cloudfront_distribution" "this" {
         allowed_methods                 = var.distribution.allowed_methods
         cached_methods                  = var.distribution.cached_methods
         cache_policy_id                 = data.aws_cloudfront_cache_policy.this.id
-        response_headers_policy_id      = aws_cloudfront_response_headers_policy.this.id
+        response_headers_policy_id      = data.aws_cloudfront_response_headers_policy.this.id
         target_origin_id                = local.origin_id
         viewer_protocol_policy          = var.distribution.viewer_protocol_policy
         min_ttl                         = 0
