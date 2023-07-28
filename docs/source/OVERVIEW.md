@@ -1,5 +1,9 @@
 # Terraform Modules: Cloudfront Distribution
 
+[![terraform workflows](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/action.yaml/badge.svg)](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/action.yaml)
+
+[![pages-build-deployment](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/pages/pages-build-deployment)
+
 A Terraform module for provisioning an [AWS Cloudfront Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html).
 
 ## Example Usage
