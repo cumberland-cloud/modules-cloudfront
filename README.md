@@ -1,7 +1,7 @@
 # Terraform Modules: Cloudfront Distribution
 
-A Terraform module for deploying a Cloudfront Distribution. Refer to [hosted documentation for more information](TODO)
+[![terraform workflows](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/action.yaml/badge.svg)](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/action.yaml)
 
-<!-- BEGIN_TF_DOCS -->
-Terraform Docs Placeholder
-<!-- END_TF_DOCS -->  
+[![pages-build-deployment](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/pages/pages-build-deployment)
+
+A Terraform module for deploying a Cloudfront Distribution. Refer to [hosted documentation for more information](https://cumberland-cloud.github.io/modules-cloudfront/).

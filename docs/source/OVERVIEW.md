@@ -1,5 +1,9 @@
 # Terraform Modules: Cloudfront Distribution
 
+[![terraform workflows](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/action.yaml/badge.svg)](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/action.yaml)
+
+[![pages-build-deployment](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/cumberland-cloud/modules-cloudfront/actions/workflows/pages/pages-build-deployment)
+
 A Terraform module for provisioning an [AWS Cloudfront Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html).
 
 ## Example Usage
@@ -23,10 +27,19 @@ module "distribution" {
 
 ## Cache Policy
 
-By default, the distribution will use a [managed cached policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html) of "Managed-CachingOptimized". A different policy may be specified by passing in the name of the block. The module will use a [cloudfront_cache_policy data block](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_cache_policy) to retrieve the ARN of the policy. **Note**: if you are not using a managed policy, the policy must exist in the AWS account before calling this module.
+By default, the distribution will use a [managed cached policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html) of "Managed-CachingOptimized". A different policy may be specified by passing in the name of the policy. The module will use a [aws_cloudfront_cache_policy data block](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_cache_policy) to retrieve the ARN of the policy. **Note**: if you are not using a managed policy, the policy must exist in the AWS account you are deploying into before calling this module.
+
+## Response Headers Policy
+
+By default, the distribution will use a [managed response headers policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-response-headers-policies.html) of "SecurityHeadersPolicy". A different policy may be specified by passing in the name of the policy. The module will use a [aws_cloudfront_response_headers_policy data block])(https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_response_headers_policy) to retrieve the ARN of the policy. **Note**: if you are not using a managed policy, the policy msut exist in the AWS account you are deploying into before calling this module.
 
 ## Certificate
+
+TODO
+
 ## Conditional Resources
+
+Some of the resources in the module are not provisioned by default. Certain conditions must be met before these resources are provisioned.
 
 ### Origin Bucket
 
@@ -40,7 +53,3 @@ If no S3 bucket is specified for the distribution logs, one will be provisioned.
 ### KMS Key
 
 If no KMS key is specified for the encryption of resources, one will be provisioned. If using a pre-existing key, the key output from the [KMS module](https://github.com/cumberland-cloud/modules-kms.git) should be passed in under the `key` object.
-
-<!-- BEGIN_TF_DOCS -->
-Terraform Docs Placeholder
-<!-- END_TF_DOCS -->  
